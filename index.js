@@ -22,7 +22,7 @@ app.set("view engine","pug");
 // * Routes Definitions
 // */
 app.get("/",(req,res) => {
-	res.status(200).send("WHATABYTE: Food for Devs");
+	res.render("index",{ title: "Home" });
 });
 //
 // /**
