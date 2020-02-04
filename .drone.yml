@@ -1,0 +1,28 @@
+kind: pipeline
+name: default
+
+workspace:
+  base: /go
+  path: src/github.com/mf-zoom/ci
+
+steps:
+  - name: report
+    image: golang
+    volumes:
+      - name: reports
+        path: /var/reports
+    commands:
+      - mkdir -p /var/reports
+      - go get
+      - go get github.com/360EntSecGroup-Skylar/goreporter
+      - goreporter -p ./ -f html -r /var/reports/
+  - name: build
+    image: node
+    commands:
+    - npm install
+    - npm test 
+
+volumes:
+  - name: reports
+    host:
+      path: /home/dev/work/src/github.com/mf-zoom/drone-go-git-test/reports
