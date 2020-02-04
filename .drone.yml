@@ -8,9 +8,6 @@ workspace:
 steps:
   - name: report
     image: golang
-    volumes:
-      - name: reports
-        path: /var/reports
     commands:
       - mkdir -p /var/reports
       - go get
@@ -21,8 +18,3 @@ steps:
     commands:
     - npm install
     - npm test 
-
-volumes:
-  - name: reports
-    host:
-      path: /home/dev/work/src/github.com/mf-zoom/drone-go-git-test/reports
