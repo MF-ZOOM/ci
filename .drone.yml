@@ -6,13 +6,6 @@ workspace:
   path: src/github.com/mf-zoom/ci
 
 steps:
-  - name: report
-    image: golang
-    commands:
-      - mkdir -p /var/reports
-      - go get
-      - go get github.com/360EntSecGroup-Skylar/goreporter
-      - goreporter -p ./ -f html -r /var/reports/
   - name: build
     image: node
     commands:
